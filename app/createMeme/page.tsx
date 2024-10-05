@@ -1,12 +1,13 @@
 "use client"
 
-import { error } from 'console';
-import { waitForDebugger } from 'inspector';
+// import { error } from 'console';
+// import { waitForDebugger } from 'inspector';
+
 import Image from 'next/image';
 import Link from 'next/link';
 import React, { useEffect, useRef, useState } from 'react'
 
-const createMeme = (props: {searchParams :{  id:string ; boxCount:string;url:string}}) => {
+const createMeme = (props: {searchParams :{ url:string; id:string ; boxCount:string;}}) => {
 // console.log(props.searchParams);
 
 interface image{
@@ -19,7 +20,7 @@ interface image{
 
 
 
-  // console.log(props.searchParams.Url)
+  // console.log(props.searchParams.url)
   // console.log(props.searchParams.id)
   // console.log(props.searchParams.boxCount)
   
@@ -36,10 +37,10 @@ const getTxts = async(e:React.SyntheticEvent) => {
   e.preventDefault()
   setSubmit('Creating..')
 
-console.log(text1.current?.value);
-console.log(text2.current?.value);
-console.log(text3.current?.value);
-console.log(text4.current?.value);
+// console.log(text1.current?.value);
+// console.log(text2.current?.value);
+// console.log(text3.current?.value);
+// console.log(text4.current?.value);
 
 
 
@@ -49,6 +50,8 @@ https://api.imgflip.com/caption_image?template_id=${props.searchParams.id}&usern
 })
 
 let response = await data.json();
+// console.log(response.data)
+
 if (response.success) {
   setResult(response.data)
   setSubmit('Submit')

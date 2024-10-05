@@ -46,7 +46,7 @@ interface Memes{
     <div className="card-actions">
 
 
- <button>
+ 
 
 
   <Link href={{
@@ -57,7 +57,7 @@ interface Memes{
       boxCount:item.box_count
     }
   }}><Btn title={'Generate Meme'}/>  </Link>
-  </button> 
+  
 
     </div>
   </div>
