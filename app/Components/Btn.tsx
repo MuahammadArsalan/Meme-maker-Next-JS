@@ -2,13 +2,13 @@
 import Link from 'next/link'
 import React from 'react'
 
-const Btn = () => {
+const Btn = (props:{title:string}) => {
 
 
 
   return (
     <>
-
+<button className='btn btn-primary'>{props.title}</button>
   
     </>
   )

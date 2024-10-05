@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react'
 import Link from 'next/link'
 import { url } from 'inspector'
 import Btn from './Components/Btn'
+import Image from 'next/image'
 
  async function page() {
   //  const [memes,setMemes]= useState([])
@@ -38,41 +39,25 @@ interface Memes{
 
     return <div  key={item.id} className="card bg-base-100 w-96 shadow-xl">
   <figure className="px-10 pt-10">
-    <img
-      src={item.url}
-      alt="memeImage"
-      className="rounded-xl" />
+    < Image src={item.url} className='rounded-xl' width={200} height={200} alt='memeImage'/>
   </figure>
   <div className="card-body items-center text-center">
     <p>{item.name}</p>
     <div className="card-actions">
 
-    <button className="btn btn-primary"><Link href={{
-      pathname:'/createMeme',
-      query:{
-        Url:item.url,
-        id:item.id,
-        boxCount:item.box_count
-      }
-    }}>
-    
-    
-    Generate Memes</Link></button>
 
-
-
-{/* <button>
+ <button>
 
 
   <Link href={{
     pathname:"/createMeme",
     query:{
-      // url:item.url,
+      url:item.url,
       id:item.id,
       boxCount:item.box_count
     }
   }}><Btn title={'Generate Meme'}/>  </Link>
-  </button> */}
+  </button> 
 
     </div>
   </div>

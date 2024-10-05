@@ -6,7 +6,8 @@ import Image from 'next/image';
 import Link from 'next/link';
 import React, { useEffect, useRef, useState } from 'react'
 
-const createMeme = (props: {searchParams :{Url:string ; id:string ; boxCount:string;url:string}}) => {
+const createMeme = (props: {searchParams :{  id:string ; boxCount:string;url:string}}) => {
+// console.log(props.searchParams);
 
 interface image{
   src:string;
@@ -20,7 +21,7 @@ interface image{
 
   // console.log(props.searchParams.Url)
   // console.log(props.searchParams.id)
-  console.log(props.searchParams.boxCount)
+  // console.log(props.searchParams.boxCount)
   
   const text1 = useRef<HTMLInputElement>(null)
   const text2 = useRef<HTMLInputElement>(null)
@@ -43,7 +44,7 @@ console.log(text4.current?.value);
 
 
 let data = await fetch(`
-https://api.imgflip.com/caption_image?template_id=${props.searchParams.id}&username=marsalan2037&password=abcqwe123456789&text0=${text1.current?.value}&text1=${text2.current?.value}`,{
+https://api.imgflip.com/caption_image?template_id=${props.searchParams.id}&username=marsalan2037&password=abcqwe123456789&text0=${text1.current?.value}&text1=${text2.current?.value}&text2=${text3.current?.value}&text3=${text4.current?.value}`,{
   method:'POST'
 })
 
@@ -53,7 +54,8 @@ if (response.success) {
   setSubmit('Submit')
 }else{
   
-alert('Error !' + response.error_message)
+  alert('Error !' + response.error_message)
+  setSubmit('Submit')
 }
 
 
@@ -122,7 +124,7 @@ if(text3.current) {
 </form>
 <div className=''>
 
-<img width={250} className='m-auto' height={250} src={props.searchParams.Url} alt="meme_image " />
+<img width={250} className='m-auto' height={250} src={props.searchParams.url} alt="meme_image " />
 </div>
 
 <div className='m-5'>
