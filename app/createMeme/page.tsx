@@ -24,14 +24,14 @@ interface image{
   // console.log(props.searchParams.id)
   // console.log(props.searchParams.boxCount)
   
-  let text1 = useRef<HTMLInputElement>(null)
-  let text2 = useRef<HTMLInputElement>(null)
-  let text3 = useRef<HTMLInputElement>(null)
-  let text4 = useRef<HTMLInputElement>(null)
+  const text1 = useRef<HTMLInputElement>(null)
+  const text2 = useRef<HTMLInputElement>(null)
+  const text3 = useRef<HTMLInputElement>(null)
+  const text4 = useRef<HTMLInputElement>(null)
 // console.log(props.searchParams)
 
-const[result,setResult] =useState<image | null>(null)
-const [Submit,setSubmit] =useState('Submit')
+const  [result,setResult] = useState<image | null>(null)
+const  [Submit,setSubmit] =  useState<string>('Submit')
 
 
 
@@ -47,12 +47,12 @@ const getTxts = async(e:React.SyntheticEvent) => {
 
 
 
-let data = await fetch(`
+const data = await fetch(`
 https://api.imgflip.com/caption_image?template_id=${props.searchParams.id}&username=marsalan2037&password=abcqwe123456789&text0=${text1.current?.value}&text1=${text2.current?.value}&text2=${text3.current?.value}&text3=${text4.current?.value}`,{
   method:'POST'
 })
 
-let response = await data.json();
+const response = await data.json();
 // console.log(response)
 
 if (response.success) {
@@ -129,8 +129,8 @@ if(text3.current) {
 </div>
 </form>
 <div className=''>
+<Image width={250}  className='m-auto' height={250} src={props.searchParams.url} alt="meme_image "/>
 
-<img width={250 +'auto'}  className='m-auto' height={250+'auto'} src={props.searchParams.url} alt="meme_image " />
 </div>
 
 <div className='m-5'>

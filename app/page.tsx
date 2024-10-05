@@ -1,5 +1,4 @@
 // "use client"
-import React, {  useState } from 'react'
 import Link from 'next/link'
 import Btn from './Components/Btn'
 import Image from 'next/image'
@@ -16,9 +15,9 @@ interface Memes{
 
 
     
-    let data =await fetch('https://api.imgflip.com/get_memes')
-    let response =  await data.json()
-    let memeArr = response.data.memes
+    const  data =await fetch('https://api.imgflip.com/get_memes')
+    const response =  await data.json()
+    const  memeArr = response.data.memes
     // console.log(memeArr)
   
     
