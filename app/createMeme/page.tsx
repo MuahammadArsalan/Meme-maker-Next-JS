@@ -5,17 +5,19 @@
 
 import Image from 'next/image';
 import Link from 'next/link';
-import React, { useEffect, useRef, useState } from 'react'
+import React, { useRef, useState } from 'react'
 
-const createMeme = (props: {searchParams :{ url:string; id:string ; boxCount:string;}}) => {
-// console.log(props.searchParams);
+const createMeme = (props: {searchParams :{ url:string; id:string ; boxCount:string}}) => {
 
 interface image{
-  src:string;
-  url : string;
-  alt: string;
-  width: number
-  height: number
+  success: boolean;
+  data:{
+    url:string;
+    id:string;
+    boxCount:string
+  }
+  ;
+  error_message?:string
 }
 
 
@@ -28,10 +30,13 @@ interface image{
   const text2 = useRef<HTMLInputElement>(null)
   const text3 = useRef<HTMLInputElement>(null)
   const text4 = useRef<HTMLInputElement>(null)
-// console.log(props)
+// console.log(props.searchParams)
 
-let [result,setResult] =useState('')
+let [result,setResult] =useState<image | null>(null)
 let [Submit,setSubmit] =useState('Submit')
+
+
+
 
 const getTxts = async(e:React.SyntheticEvent) => {
   e.preventDefault()
@@ -50,10 +55,10 @@ https://api.imgflip.com/caption_image?template_id=${props.searchParams.id}&usern
 })
 
 let response = await data.json();
-// console.log(response.data)
+// console.log(response)
 
 if (response.success) {
-  setResult(response.data)
+  setResult(response)
   setSubmit('Submit')
 }else{
   
@@ -127,13 +132,13 @@ if(text3.current) {
 </form>
 <div className=''>
 
-<img width={250} className='m-auto' height={250} src={props.searchParams.url} alt="meme_image " />
+<img width={250 +'auto'}  className='m-auto' height={250+'auto'} src={props.searchParams.url} alt="meme_image " />
 </div>
 
 <div className='m-5'>
 
  {result ? 
- <Image className='m-auto' src={result.url} width={250} height={250} alt="meme"/> : null} 
+ <Image className='m-auto' src={result.data.url} width={250} height={250} alt="meme"/> : null} 
 </div>
 
 

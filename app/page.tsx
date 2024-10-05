@@ -1,5 +1,5 @@
 // "use client"
-import React, { useEffect, useState } from 'react'
+import React, {  useState } from 'react'
 import Link from 'next/link'
 import { url } from 'inspector'
 import Btn from './Components/Btn'
@@ -44,11 +44,6 @@ interface Memes{
   <div className="card-body items-center text-center">
     <p>{item.name}</p>
     <div className="card-actions">
-
-
- 
-
-
   <Link href={{
     pathname:"/createMeme",
     query:{
@@ -56,7 +51,7 @@ interface Memes{
       id:item.id,
       boxCount:item.box_count
     }
-  }}><Btn title={'Generate Meme'}/>  </Link>
+  }}><Btn title={'Generate Meme'}/></Link>
   
 
     </div>
