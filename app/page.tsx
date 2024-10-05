@@ -1,7 +1,6 @@
 // "use client"
 import React, {  useState } from 'react'
 import Link from 'next/link'
-import { url } from 'inspector'
 import Btn from './Components/Btn'
 import Image from 'next/image'
 

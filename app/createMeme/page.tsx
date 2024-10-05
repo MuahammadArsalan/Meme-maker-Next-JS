@@ -1,13 +1,11 @@
 "use client"
 
-// import { error } from 'console';
-// import { waitForDebugger } from 'inspector';
 
 import Image from 'next/image';
 import Link from 'next/link';
 import React, { useRef, useState } from 'react'
 
-const createMeme = (props: {searchParams :{ url:string; id:string ; boxCount:string}}) => {
+const CreateMeme = (props: {searchParams :{url:string ; id:string}}) => {
 
 interface image{
   success: boolean;
@@ -26,14 +24,14 @@ interface image{
   // console.log(props.searchParams.id)
   // console.log(props.searchParams.boxCount)
   
-  const text1 = useRef<HTMLInputElement>(null)
-  const text2 = useRef<HTMLInputElement>(null)
-  const text3 = useRef<HTMLInputElement>(null)
-  const text4 = useRef<HTMLInputElement>(null)
+  let text1 = useRef<HTMLInputElement>(null)
+  let text2 = useRef<HTMLInputElement>(null)
+  let text3 = useRef<HTMLInputElement>(null)
+  let text4 = useRef<HTMLInputElement>(null)
 // console.log(props.searchParams)
 
-let [result,setResult] =useState<image | null>(null)
-let [Submit,setSubmit] =useState('Submit')
+const[result,setResult] =useState<image | null>(null)
+const [Submit,setSubmit] =useState('Submit')
 
 
 
@@ -146,4 +144,4 @@ if(text3.current) {
   )
 }
 
-export default createMeme
+export default CreateMeme
