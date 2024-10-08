@@ -28,6 +28,8 @@ const CreateMeme = (props: {searchParams :{url:string ; id:string; boxCount:stri
   const text2 = useRef<HTMLInputElement>(null)
   const text3 = useRef<HTMLInputElement>(null)
   const text4 = useRef<HTMLInputElement>(null)
+  const text5 = useRef<HTMLInputElement>(null)
+  const text6 = useRef<HTMLInputElement>(null)
 // console.log(props.searchParams)
 
 const  [result,setResult] = useState<image | null>(null)
@@ -48,7 +50,7 @@ const getTxts = async(e:React.SyntheticEvent) => {
 
 
 const data = await fetch(`
-https://api.imgflip.com/caption_image?template_id=${props.searchParams.id}&username=marsalan2037&password=abcqwe123456789&text0=${text1.current?.value}&text1=${text2.current?.value}&text2=${text3.current?.value}&text3=${text4.current?.value}`,{
+https://api.imgflip.com/caption_image?template_id=${props.searchParams.id}&username=marsalan2037&password=abcqwe123456789&text0=${text1.current?.value}&text1=${text2.current?.value}&text2=${text3.current?.value}&text3=${text4.current?.value}&text4=${text5.current?.value}&text5=${text6.current?.value}`,{
   method:'POST'
 })
 
@@ -83,6 +85,14 @@ if(text3.current) {
 }if(text4.current) {
   text4.current.value = ''
 
+
+}if(text5.current) {
+  text5.current.value = ''
+
+}
+if(text6.current) {
+  text6.current.value = ''
+
 }
 
 }
@@ -104,24 +114,34 @@ if(text3.current) {
   
   <input type="text" className="grow" ref={text1} placeholder="text1" />
 </label>
-<br /><br />
+<br />
 
 <label className="input input-bordered flex items-center gap-2">
   
   <input type="text" className="grow"ref={text2} placeholder="text2" />
 </label>
-<br /><br />
+<br />
 
 
 <label className="input input-bordered flex items-center gap-2">
   <input type="text" className="grow" ref={text3} placeholder="text3" />
 </label>
-<br /><br />
+<br />
 
 
 <label className="input input-bordered flex items-center gap-2">
   <input ref={text4} type="text" className="grow" placeholder="text4" />
 </label>
+<br />
+<label className="input input-bordered flex items-center gap-2">
+  <input ref={text5} type="text" className="grow" placeholder="text5" />
+</label>
+<br />
+
+<label className="input input-bordered flex items-center gap-2">
+  <input ref={text6} type="text" className="grow" placeholder="text6" />
+</label>
+<br />
 
 <button type='submit' className='btn btn-primary m-5' >{Submit}</button>
 
@@ -129,9 +149,12 @@ if(text3.current) {
 </form>
 <div className=''>
 
+
+<h1 className='text-center font-bold my-3'>Fill only {props.searchParams.boxCount} Feilds To create meme!</h1>
+
   {result ?
-    <Image className='m-auto' src={result.data.url} width={250} height={250} alt="meme"/> :
-  <Image width={250}  className='m-auto' height={250} src={props.searchParams.url} alt="meme_image "/> 
+    <Image className='m-auto' src={result.data.url} width={330} height={300} alt="meme"/> : 
+  <Image width={330}  className='m-auto' height={300} src={props.searchParams.url} alt="meme_image "/> 
   
  
 }
