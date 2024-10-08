@@ -3,10 +3,7 @@
 
 import Image from 'next/image';
 import Link from 'next/link';
-import React, { useRef, useState } from 'react'
-
-const CreateMeme = (props: {searchParams :{url:string ; id:string}}) => {
-
+import React, { useEffect, useRef, useState } from 'react'
 interface image{
   success: boolean;
   data:{
@@ -14,9 +11,12 @@ interface image{
     id:string;
     boxCount:string
   }
-  ;
+  
   error_message?:string
 }
+
+const CreateMeme = (props: {searchParams :{url:string ; id:string; boxCount:string}}) => {
+
 
 
 
@@ -87,7 +87,6 @@ if(text3.current) {
 
 }
 
-
   return (
 
     <>
@@ -129,15 +128,19 @@ if(text3.current) {
 </div>
 </form>
 <div className=''>
-<Image width={250}  className='m-auto' height={250} src={props.searchParams.url} alt="meme_image "/>
+
+  {result ?
+    <Image className='m-auto' src={result.data.url} width={250} height={250} alt="meme"/> :
+  <Image width={250}  className='m-auto' height={250} src={props.searchParams.url} alt="meme_image "/> 
+  
+ 
+}
+
 
 </div>
 
-<div className='m-5'>
 
- {result ? 
- <Image className='m-auto' src={result.data.url} width={250} height={250} alt="meme"/> : null} 
-</div>
+
 
 
     </>

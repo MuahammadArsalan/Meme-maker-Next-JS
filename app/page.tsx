@@ -2,6 +2,7 @@
 import Link from 'next/link'
 import Btn from './Components/Btn'
 import Image from 'next/image'
+import {  } from 'react'
 
  async function page() {
   //  const [memes,setMemes]= useState([])
@@ -10,7 +11,7 @@ interface Memes{
   id: string
   name: string
   url: string
-  box_count: number
+  box_count: string
 }
 
 
@@ -19,8 +20,6 @@ interface Memes{
     const response =  await data.json()
     const  memeArr = response.data.memes
     // console.log(memeArr)
-  
-    
 
 
   return (
