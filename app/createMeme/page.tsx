@@ -4,24 +4,26 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import React, {  useRef, useState } from 'react'
+
 interface image{
   success: boolean;
   data:{
     url:string;
     id:string;
-    boxCount:string
+    boxCount:number
   }
   
   error_message?:string
 }
 
-const CreateMeme = (props: {searchParams :{url:string ; id:string; boxCount:string}}) => {
+const CreateMeme = (props: {searchParams :{url:string ; id:string; boxCount:number}}) => {
 
 
 
 
   // console.log(props.searchParams.url)
   // console.log(props.searchParams.id)
+
   // console.log(props.searchParams.boxCount)
   
   const text1 = useRef<HTMLInputElement>(null)
@@ -36,14 +38,12 @@ const  [result,setResult] = useState<image | null>(null)
 const  [Submit,setSubmit] =  useState<string>('Submit')
 
 
-
-
 const getTxts = async(e:React.SyntheticEvent) => {
   e.preventDefault()
   setSubmit('Creating..')
-
-// console.log(text1.current?.value);
-// console.log(text2.current?.value);
+  
+  // console.log(text1.current?.value);
+  // console.log(text2.current?.value);
 // console.log(text3.current?.value);
 // console.log(text4.current?.value);
 
@@ -77,28 +77,44 @@ if(text2.current){
   
   text2.current.value = ''
 }
-  
-  
+
+
 if(text3.current) {
   text3.current.value = ''
-
+  
 }if(text4.current) {
   text4.current.value = ''
-
-
+  
+  
 }if(text5.current) {
   text5.current.value = ''
-
+  
 }
 if(text6.current) {
   text6.current.value = ''
-
+  
 }
 
 }
 
-  return (
+// let input = () => {
+//   let boxInp : JSX.Element[] = [] 
 
+//   for(let i=0 ; i < props.searchParams.boxCount; i++){
+// boxInp.push(
+// <label >
+//     <input type="text" className="grow" ref={text1} placeholder="text1" />
+//   </label>
+// )
+//   }
+
+// }
+
+
+
+
+return (
+  
     <>
     <div className='flex flex-wrap justify-around align-start '>
 
