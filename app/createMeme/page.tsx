@@ -1,6 +1,6 @@
 "use client"
 
-
+import "@/app/createMeme/a.css"
 import Image from 'next/image';
 import Link from 'next/link';
 import React, {  useRef, useState } from 'react'
@@ -125,6 +125,7 @@ return (
 
 <form onSubmit={getTxts} className='flex-wrap justify-around'>
 <div className='w-[40vw] text-center m-auto'>
+<h1 className='text-center font-bold my-3'>Fill only  <span className='text-3xl t'> {props.searchParams.boxCount}</span> Feilds To create meme!</h1>
 
 <label className="input input-bordered flex items-center gap-2">
   
@@ -166,7 +167,6 @@ return (
 <div className=''>
 
 
-<h1 className='text-center font-bold my-3'>Fill only {props.searchParams.boxCount} Feilds To create meme!</h1>
 
   {result ?
     <Image className='m-auto' src={result.data.url} width={330} height={300} alt="meme"/> : 
